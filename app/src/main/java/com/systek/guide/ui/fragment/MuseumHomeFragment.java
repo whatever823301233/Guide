@@ -20,6 +20,7 @@ import com.systek.guide.bean.Museum;
 import com.systek.guide.iView.IMuseumHomeView;
 import com.systek.guide.presenter.MuseumHomePresenter;
 import com.systek.guide.ui.BaseFragment;
+import com.systek.guide.ui.activity.GuideActivity;
 
 import java.util.List;
 
@@ -108,7 +109,7 @@ public class MuseumHomeFragment extends BaseFragment implements IMuseumHomeView 
         rlTopicHome.setOnClickListener(onClickListener);
         ivPlayStateCtrl.setOnClickListener(onClickListener);
         rlCollectionHome.setOnClickListener(onClickListener);
-        rlNearlyHome.setOnClickListener(onClickListener);
+        //rlNearlyHome.setOnClickListener(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -244,6 +245,19 @@ public class MuseumHomeFragment extends BaseFragment implements IMuseumHomeView 
         mListener.showFragment(fragment);
     }
 
+    @Override
+    public void addShowFragment(String tag) {
+        mListener.showFragment(tag);
+    }
+
+    @Override
+    public void showGuideActivity(String simpleName) {
+        Intent intent = new Intent(getHoldingActivity(), GuideActivity.class);
+        intent.putExtra(GuideActivity.INTENT_FRAGMENT_FLAG,simpleName);
+        intent.putExtra(GuideActivity.INTENT_MUSEUM_ID,currentMuseum.getId());
+        startActivity(intent);
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -259,6 +273,8 @@ public class MuseumHomeFragment extends BaseFragment implements IMuseumHomeView 
         void setTitle(String title);
 
         void showFragment(BaseFragment fragment);
+
+        void showFragment(String tag);
 
         void closeDrawer();
 

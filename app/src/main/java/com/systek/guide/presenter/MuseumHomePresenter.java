@@ -17,7 +17,6 @@ import com.systek.guide.biz.iBiz.IMuseumHomeBiz;
 import com.systek.guide.biz.iBiz.OnInitBeanListener;
 import com.systek.guide.biz.iBiz.OnResponseListener;
 import com.systek.guide.iView.IMuseumHomeView;
-import com.systek.guide.ui.BaseFragment;
 import com.systek.guide.ui.fragment.CollectionFragment;
 import com.systek.guide.ui.fragment.ExhibitListFragment;
 import com.systek.guide.ui.fragment.MapFragment;
@@ -166,27 +165,24 @@ public class MuseumHomePresenter {
 
     public void onImageButtonClick() {
         View view = museumHomeView.getOnClickView();
-        BaseFragment fragment = null;
-        Museum museum = museumHomeView.getCurrentMuseum();
-        String museumId = museum.getId();
+        String flag = null;
         switch (view.getId()){
-            case R.id.rlGuideHome:
-                fragment = ExhibitListFragment.newInstance(museumId);
-                break;
-            case R.id.rlMapHome:
-                fragment = MapFragment.newInstance(museumId);
-                break;
             case R.id.rlTopicHome:
-                fragment = TopicFragment.newInstance(museumId);
+                flag = TopicFragment.class.getSimpleName();
                 break;
             case R.id.rlCollectionHome:
-                fragment = CollectionFragment.newInstance(museumId);
+                flag = CollectionFragment.class.getSimpleName();
                 break;
         }
-        if(fragment != null){
-            museumHomeView.addShowFragment(fragment);
+        if(flag != null){
+            museumHomeView.addShowFragment(flag);
+            return;
         }
-
+        if(view.getId() == R.id.rlMapHome){
+            museumHomeView.showGuideActivity(MapFragment.class.getSimpleName());
+        }else{
+            museumHomeView.showGuideActivity(ExhibitListFragment.class.getSimpleName());
+        }
     }
 
     public void onResume() {

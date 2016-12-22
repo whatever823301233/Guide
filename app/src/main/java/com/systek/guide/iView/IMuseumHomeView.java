@@ -57,4 +57,7 @@ public interface IMuseumHomeView {
 
     void addShowFragment(BaseFragment fragment);
 
+    void addShowFragment(String tag);
+
+    void showGuideActivity(String simpleName);
 }

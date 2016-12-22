@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.media.MediaBrowserCompat;
 import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -32,6 +33,7 @@ import com.systek.guide.ui.BaseFragment;
 import com.systek.guide.ui.fragment.ChannelFragment;
 import com.systek.guide.ui.fragment.CityFragment;
 import com.systek.guide.ui.fragment.CollectionFragment;
+import com.systek.guide.ui.fragment.EmptyFragment;
 import com.systek.guide.ui.fragment.ExhibitListFragment;
 import com.systek.guide.ui.fragment.MapFragment;
 import com.systek.guide.ui.fragment.MuseumHomeFragment;
@@ -45,6 +47,7 @@ public class MainActivity extends AppActivity implements MainActivityView,
         MuseumHomeFragment.OnMuseumHomeFragmentInteractionListener,
         ExhibitListFragment.OnFragmentInteractionListener,
         MapFragment.OnFragmentInteractionListener,
+        EmptyFragment.OnFragmentInteractionListener,
         TopicFragment.OnFragmentInteractionListener,
         CollectionFragment.OnFragmentInteractionListener,
         ChannelFragment.OnFragmentInteractionListener,
@@ -267,6 +270,34 @@ public class MainActivity extends AppActivity implements MainActivityView,
             radioGroupTitle.setVisibility(View.GONE);
         }
         toolbarTitle.setText(title);
+    }
+
+    @Override
+    public void showFragment(String tag) {
+        if(TextUtils.isEmpty(tag)){
+            return;
+        }
+        Fragment mFragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if(mFragment == null){
+            BaseFragment fragment = null;
+            if(tag.equals(ExhibitListFragment.class.getSimpleName())){
+                fragment = ExhibitListFragment.newInstance(currentMuseumId);
+            }else if(tag.equals(MapFragment.class.getSimpleName())){
+                fragment = MapFragment.newInstance(currentMuseumId);
+            }else if(tag.equals(TopicFragment.class.getSimpleName())){
+                fragment = TopicFragment.newInstance(currentMuseumId);
+            }else if(tag.equals(CollectionFragment.class.getSimpleName())){
+                fragment = CollectionFragment.newInstance(currentMuseumId);
+            }
+            if(fragment != null){
+                addFragment(fragment);
+            }
+        }else{
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .show(mFragment)
+                    .commitAllowingStateLoss();
+        }
     }
 
     @Override

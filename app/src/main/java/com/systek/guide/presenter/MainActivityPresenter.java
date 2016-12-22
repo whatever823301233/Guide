@@ -1,11 +1,10 @@
 package com.systek.guide.presenter;
 
 import android.content.Intent;
-import android.text.TextUtils;
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.systek.guide.R;
-import com.systek.guide.base.util.LogUtil;
 import com.systek.guide.iView.MainActivityView;
 import com.systek.guide.ui.fragment.CityFragment;
 import com.systek.guide.ui.fragment.ExhibitListFragment;
@@ -40,20 +39,16 @@ public class MainActivityPresenter {
     }
 
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        String museumId = mainActivityView.getMuseumId();
-        if(TextUtils.isEmpty(museumId)){
-            mainActivityView.showErrorView();
-        }
         if(i == R.id.radioBtnMap){
-            LogUtil.i(TAG ,"radioBtnMap");
+            Log.i(MapFragment.class.getSimpleName() ,"radioBtnMap");
             mainActivityView.setMapTitle();
-            mainActivityView.showFragment(MapFragment.newInstance(museumId));
-            mainActivityView.hideFragment(ExhibitListFragment.class.getSimpleName());
+            mainActivityView.showFragment(MapFragment.class.getSimpleName());
+            //mainActivityView.hideFragment(ExhibitListFragment.class.getSimpleName());
         }else{
-            LogUtil.i(TAG ,"radioBtnExhibitList");
+            Log.i(MapFragment.class.getSimpleName() ,"radioBtnExhibitList");
             mainActivityView.setNearExhibitTitle();
-            mainActivityView.showFragment(ExhibitListFragment.newInstance(museumId));
-            mainActivityView.hideFragment(MapFragment.class.getSimpleName());
+            mainActivityView.showFragment(ExhibitListFragment.class.getSimpleName());
+            //mainActivityView.hideFragment(EmptyFragment.class.getSimpleName());
         }
     }
 }

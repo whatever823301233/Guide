@@ -17,6 +17,8 @@ public interface MainActivityView {
 
     void showFragment(BaseFragment fragment);
 
+    void showFragment(String tag);
+
     boolean isDrawerOpen();
 
     void closeDrawer();

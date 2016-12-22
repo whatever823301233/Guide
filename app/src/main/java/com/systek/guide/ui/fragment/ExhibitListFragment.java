@@ -1,7 +1,6 @@
 package com.systek.guide.ui.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -9,14 +8,14 @@ import android.view.View;
 import com.systek.guide.R;
 import com.systek.guide.adapter.ExhibitAdapter;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.iView.IMainGuideView;
+import com.systek.guide.iView.IExhibitListView;
 import com.systek.guide.presenter.NearExhibitPresenter;
 import com.systek.guide.ui.BaseFragment;
 import com.systek.guide.ui.widget.recyclerView.QRecyclerView;
 
 import java.util.List;
 
-public class ExhibitListFragment extends BaseFragment implements IMainGuideView {
+public class ExhibitListFragment extends BaseFragment implements IExhibitListView {
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -52,8 +51,6 @@ public class ExhibitListFragment extends BaseFragment implements IMainGuideView 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        presenter = new NearExhibitPresenter(this);
         if (getArguments() != null) {
             museumId = getArguments().getString(ARG_PARAM1);
         }
@@ -79,6 +76,8 @@ public class ExhibitListFragment extends BaseFragment implements IMainGuideView 
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+        presenter = new NearExhibitPresenter(this);
+
     }
 
     @Override
@@ -97,100 +96,14 @@ public class ExhibitListFragment extends BaseFragment implements IMainGuideView 
         return R.layout.fragment_exhibit_list;
     }
 
-    @Override
-    public void refreshNearExhibitList() {
-        // TODO: 2016/12/9
-    }
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void toNextActivity(Intent intent) {
-
-    }
-
-    @Override
-    public void showFailedError() {
-
-    }
-
-    @Override
-    public void hideErrorView() {
-
-    }
-
-    @Override
-    public void showNearExhibits() {
-
-    }
-
-    @Override
-    public void setNearExhibits(List<Exhibit> exhibitList) {
-
-    }
-
-    @Override
-    public String getMuseumId() {
-        return null;
-    }
-
-    @Override
-    public void setChooseExhibit(Exhibit exhibit) {
-
-    }
-
-    @Override
-    public Exhibit getChooseExhibit() {
-        return null;
-    }
-
-    @Override
-    public void toPlay() {
-
-    }
-
-    @Override
-    public void changeToNearExhibitFragment() {
-
-    }
-
-    @Override
-    public void changeToMapExhibitFragment() {
-
-    }
-
-    @Override
-    public String getFragmentFlag() {
-        return null;
-    }
-
-    @Override
-    public void setFragmentFlag(String flag) {
-
-    }
-
-    @Override
-    public void autoPlayExhibit(Exhibit exhibit) {
-
-    }
-
-    @Override
-    public List<Exhibit> getNearExhibits() {
-        return null;
-    }
 
     @Override
     public void setNearExhibitTitle() {
         mListener.setNearExhibitTitle();
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

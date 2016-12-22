@@ -19,8 +19,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/AppTheme"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activity.BeginActivity"
             android:theme="@style/FullscreenTheme">
@@ -30,20 +30,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <receiver android:name=".receiver.ExitReceiver" />
         <receiver android:name=".receiver.MediaButtonReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
-
         <service
             android:name=".service.PlayService"
             android:enabled="true"
             android:exported="true" />
-
-        <activity android:name=".ui.activity.PlayActivity"
+        <activity
+            android:name=".ui.activity.PlayActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.activity.GuideActivity"
             android:launchMode="singleTop"/>
     </application>
 

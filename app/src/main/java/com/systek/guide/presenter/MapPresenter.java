@@ -59,6 +59,7 @@ public class MapPresenter {
         mapView.setUseRoutedLocation(true);
         Message msg = Message.obtain();
         msg.what = MSG_WHAT_SET_ROUTE;
+        msg.obj = triplets;
         handler.sendMessage(msg);
     }
 
@@ -67,7 +68,7 @@ public class MapPresenter {
         handler.sendEmptyMessage(MSG_WHAT_SET_ROUTE_NULL);
     }
 
-    public void onViewCreated() {
+    public void onResume() {
         mapView.setTitle();
     }
 

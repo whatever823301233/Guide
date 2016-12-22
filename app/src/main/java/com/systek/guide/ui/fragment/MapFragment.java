@@ -86,21 +86,7 @@ public class MapFragment extends BaseFragment implements IMapView,
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        presenter = new MapPresenter(this);
-        if (getArguments() != null) {
-            museumId = getArguments().getString(ARG_PARAM1);
-        }
-    }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        presenter.onViewCreated();
-        initMap();
-    }
     private void initMap() {
         try{
             guideManager = GuideManager.getInstance(getHoldingActivity());
@@ -114,8 +100,6 @@ public class MapFragment extends BaseFragment implements IMapView,
         }catch ( Exception e ){
             e.printStackTrace();
         }
-
-
     }
 
     private void loadNdd() {
@@ -127,6 +111,7 @@ public class MapFragment extends BaseFragment implements IMapView,
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.i(getTag(),"onAttach");
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
@@ -136,8 +121,65 @@ public class MapFragment extends BaseFragment implements IMapView,
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(getTag(),"onCreate");
+        presenter = new MapPresenter(this);
+        if (getArguments() != null) {
+            museumId = getArguments().getString(ARG_PARAM1);
+        }
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i(getTag(),"onViewCreated");
+        initMap();
+    }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i(getTag(),"onStart");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(getTag(),"onResume");
+        presenter.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(getTag(),"onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i(getTag(),"onStop");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(getTag(),"onSaveInstanceState");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(getTag(),"onDestroy");
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
+        Log.i(getTag(),"onDetach");
         mListener = null;
     }
 

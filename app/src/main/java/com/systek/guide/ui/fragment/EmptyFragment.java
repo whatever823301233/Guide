@@ -2,7 +2,9 @@ package com.systek.guide.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 
 import com.systek.guide.R;
@@ -40,15 +42,45 @@ public class EmptyFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(getTag(),"onAttach");
         if (getArguments() != null) {
         }
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i(getTag(),"onViewCreated");
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(getTag(),"onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(getTag(),"onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i(getTag(),"onStop");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(getTag(),"onDestroy");
+    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.i(getTag(),"onAttach");
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
