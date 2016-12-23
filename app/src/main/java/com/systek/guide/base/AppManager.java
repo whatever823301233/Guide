@@ -21,7 +21,6 @@ public class AppManager {
 
     private ArrayList<Activity> mActivityList;
     private ArrayList<Service> mServiceList;
-    private Activity mCurrentActivity;
 
     private String museumId;
     private int currentDuration;
@@ -226,7 +225,6 @@ public class AppManager {
      */
     public synchronized void addActivity( Activity activity ) {
 
-        mCurrentActivity = activity;
         if( !mActivityList.contains( activity ) ) {
             mActivityList.add( activity );
         }
@@ -245,27 +243,11 @@ public class AppManager {
         mActivityList.remove( activity );
     }
 
-    /**
-     *
-     * 获取当前Activity
-     *
-     * @return Activity
-     * @since 1.1.0
-     */
-    public Activity getCurrentActivity() {
-
-        return mCurrentActivity;
-    }
-
     private synchronized void closeAllActivity() {
-        if(mCurrentActivity != null){
-            mCurrentActivity.finish();
-        }
         for( Activity activity : mActivityList ) {
             activity.finish();
         }
         mActivityList.clear();
-        mCurrentActivity = null;
     }
 
     /**
@@ -329,6 +311,7 @@ public class AppManager {
     public void setCurrentDuration(int currentDuration) {
         this.currentDuration = currentDuration;
     }
+
     public int getCurrentDuration() {
         return currentDuration;
     }

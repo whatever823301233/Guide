@@ -1,6 +1,6 @@
 package com.systek.guide.adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.systek.guide.R;
-import com.systek.guide.base.AppManager;
 import com.systek.guide.base.Constants;
 import com.systek.guide.base.util.AndroidUtil;
 import com.systek.guide.base.util.BitmapUtil;
@@ -27,20 +26,20 @@ import java.util.List;
 
 public class MuseumIconAdapter extends BaseRecyclerAdapter<MuseumIconAdapter.ViewHolder>{
 
-    private Context context;
+    private Activity context;
     private List<String> list;
     private LayoutInflater inflater;
     private String  museumId;
 
 
-    public MuseumIconAdapter(Context context) {
-        this.context = context.getApplicationContext();
+    public MuseumIconAdapter(Activity context) {
+        this.context = context;
         inflater=LayoutInflater.from(this.context);
         this.list = new ArrayList<>();
     }
 
-    public MuseumIconAdapter(Context context,String museumId) {
-        this.context = context.getApplicationContext();
+    public MuseumIconAdapter(Activity context,String museumId) {
+        this.context = context;
         inflater = LayoutInflater.from(this.context);
         this.museumId=museumId;
         this.list = new ArrayList<>();
@@ -79,8 +78,8 @@ public class MuseumIconAdapter extends BaseRecyclerAdapter<MuseumIconAdapter.Vie
         if(isFileExists){
             String name = FileUtil.changeUrl2Name(url);
             Bitmap bitmap = BitmapUtil.decodeSampledBitmapFromFile(Constants.LOCAL_PATH + museumId + "/" + name,
-                    AndroidUtil.getMobileWidth(AppManager.getInstance(context).getCurrentActivity()),
-                    AndroidUtil.getMobileHeight(AppManager.getInstance(context).getCurrentActivity()));
+                    AndroidUtil.getMobileWidth(context),
+                    AndroidUtil.getMobileHeight(context));
             holder.imageView.setImageBitmap(bitmap);
         }else{
             Glide.with(context)

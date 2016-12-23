@@ -86,7 +86,6 @@ public class GuideActivity extends AppActivity implements IMainGuideView,
     }
 
 
-
     public void onConnected() {
         if (mMediaId == null) {
             mMediaId = MediaIDHelper.createBrowseCategoryMediaID(MediaIDHelper.MEDIA_ID_MUSEUM_ID,museumId);
@@ -168,7 +167,6 @@ public class GuideActivity extends AppActivity implements IMainGuideView,
         if( toolbarTitle != null && null != radioGroupTitle){
             toolbarTitle.setVisibility( View.GONE );
             radioGroupTitle.setVisibility( View.VISIBLE );
-            //radioButtonMap.setChecked(false);
             radioButtonList.setChecked(true);
         }
     }
@@ -179,7 +177,6 @@ public class GuideActivity extends AppActivity implements IMainGuideView,
             toolbarTitle.setVisibility( View.GONE );
             radioGroupTitle.setVisibility( View.VISIBLE );
             radioButtonMap.setChecked(true);
-            //radioButtonList.setChecked(false);
         }
     }
 
@@ -198,14 +195,12 @@ public class GuideActivity extends AppActivity implements IMainGuideView,
             // 使用当前Fragment的布局替代id_content的控件
             transaction.replace(R.id.fragment_container, exhibitListFragment);
             transaction.commit();
-            //radioButtonList.setChecked(true);
         }else{
             if(mapFragment == null){
                 mapFragment = MapFragment.newInstance(museumId);
             }
             transaction.replace(R.id.fragment_container, mapFragment);
             transaction.commit();
-            //radioButtonList.setChecked(true);
         }
 
     }

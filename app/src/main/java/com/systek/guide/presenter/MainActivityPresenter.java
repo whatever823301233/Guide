@@ -43,12 +43,10 @@ public class MainActivityPresenter {
             Log.i(MapFragment.class.getSimpleName() ,"radioBtnMap");
             mainActivityView.setMapTitle();
             mainActivityView.showFragment(MapFragment.class.getSimpleName());
-            //mainActivityView.hideFragment(ExhibitListFragment.class.getSimpleName());
         }else{
             Log.i(MapFragment.class.getSimpleName() ,"radioBtnExhibitList");
             mainActivityView.setNearExhibitTitle();
             mainActivityView.showFragment(ExhibitListFragment.class.getSimpleName());
-            //mainActivityView.hideFragment(EmptyFragment.class.getSimpleName());
         }
     }
 }

@@ -255,6 +255,7 @@ public class MuseumHomeFragment extends BaseFragment implements IMuseumHomeView 
         Intent intent = new Intent(getHoldingActivity(), GuideActivity.class);
         intent.putExtra(GuideActivity.INTENT_FRAGMENT_FLAG,simpleName);
         intent.putExtra(GuideActivity.INTENT_MUSEUM_ID,currentMuseum.getId());
+        getActivity().overridePendingTransition(0, 0);
         startActivity(intent);
     }
 

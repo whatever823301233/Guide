@@ -39,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         AppManager.getInstance( getApplicationContext() ).addActivity( this );
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

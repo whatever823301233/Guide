@@ -44,6 +44,7 @@
             android:name=".ui.activity.PlayActivity"
             android:launchMode="singleTop" />
         <activity android:name=".ui.activity.GuideActivity"
+            android:theme="@style/Theme.notAnimation"
             android:launchMode="singleTop"/>
     </application>
 

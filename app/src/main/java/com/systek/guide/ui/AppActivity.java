@@ -76,7 +76,6 @@ public abstract  class AppActivity extends BaseActivity implements MediaBrowserP
         if (shouldShowControls()) {
             showPlaybackControls();
         } else {
-            //LogUtil.d(TAG, "mediaControllerCallback.onMetadataChanged: " + "hiding controls because metadata is null");
             hidePlaybackControls();
         }
 
@@ -231,7 +230,7 @@ public abstract  class AppActivity extends BaseActivity implements MediaBrowserP
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_base;
+        return  R.layout.activity_base;
     }
 
     @Override
