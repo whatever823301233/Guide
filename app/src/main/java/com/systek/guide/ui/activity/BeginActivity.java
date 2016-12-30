@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.systek.guide.R;
 import com.systek.guide.base.util.Utility;
-import com.systek.guide.iView.IBeginView;
+import com.systek.guide.ui.iView.IBeginView;
 import com.systek.guide.presenter.BeginPresenter;
 import com.systek.guide.ui.AppActivity;
 import com.systek.guide.ui.BaseFragment;

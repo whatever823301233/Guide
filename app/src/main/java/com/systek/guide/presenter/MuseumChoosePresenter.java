@@ -11,7 +11,7 @@ import com.systek.guide.bean.Museum;
 import com.systek.guide.biz.bizImpl.MuseumChooseBiz;
 import com.systek.guide.biz.iBiz.IMuseumChooseBiz;
 import com.systek.guide.biz.iBiz.OnInitBeanListener;
-import com.systek.guide.iView.IMuseumChooseView;
+import com.systek.guide.ui.iView.IMuseumChooseView;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

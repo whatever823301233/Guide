@@ -8,8 +8,7 @@ import android.content.ContentValues;
  */
 public class Exhibit extends BaseBean {
 
-    public static final String TABLE_NAME="exhibit";
-
+    public static final String TABLE_NAME       = "exhibit";
 
     public static final String _ID              = "_id";
     public static final String ID               = "id";
@@ -33,8 +32,6 @@ public class Exhibit extends BaseBean {
     public static final String PRIORITY         = "priority";
     public static final String IS_FAVORITE      = "isfavorite";
     public static final String AREA_ROOM_ID     = "areaRoomId";
-
-
 
 
     private int _id;

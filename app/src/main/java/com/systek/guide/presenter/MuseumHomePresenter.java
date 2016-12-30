@@ -16,7 +16,7 @@ import com.systek.guide.biz.bizImpl.MuseumHomeBiz;
 import com.systek.guide.biz.iBiz.IMuseumHomeBiz;
 import com.systek.guide.biz.iBiz.OnInitBeanListener;
 import com.systek.guide.biz.iBiz.OnResponseListener;
-import com.systek.guide.iView.IMuseumHomeView;
+import com.systek.guide.ui.iView.IMuseumHomeView;
 import com.systek.guide.ui.fragment.CollectionFragment;
 import com.systek.guide.ui.fragment.ExhibitListFragment;
 import com.systek.guide.ui.fragment.MapFragment;

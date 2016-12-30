@@ -6,7 +6,7 @@ import android.os.Message;
 
 import com.systek.guide.biz.bizImpl.MapBiz;
 import com.systek.guide.biz.iBiz.IMapBiz;
-import com.systek.guide.iView.IMapView;
+import com.systek.guide.ui.iView.IMapView;
 
 import java.lang.ref.WeakReference;
 

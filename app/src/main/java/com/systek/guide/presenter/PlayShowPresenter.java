@@ -17,7 +17,7 @@ import com.systek.guide.bean.Exhibit;
 import com.systek.guide.bean.MultiAngleImg;
 import com.systek.guide.biz.bizImpl.PlayShowBiz;
 import com.systek.guide.biz.iBiz.IPlayShowBiz;
-import com.systek.guide.iView.IPlayView;
+import com.systek.guide.ui.iView.IPlayView;
 
 import java.util.ArrayList;
 

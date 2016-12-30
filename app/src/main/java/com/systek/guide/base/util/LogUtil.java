@@ -21,7 +21,7 @@ public class LogUtil {
     private static final int MESSAGE_LENGTH_MAX = 256;
     private static final int mMaxArrayCount = 100;// 每100条向文件里保存一次
     private static final int mMaxLogLength = 5 * 1024 * 1024; // 最大5M
-    private static Object mLock = new Object();
+    private static final Object mLock = new Object();
 
     private static ArrayList<String> mLogArray = new ArrayList<>();
     private static final String LOG_FILE_NAME = "log.txt";
@@ -31,13 +31,10 @@ public class LogUtil {
 
 
     public static void isPrintLog( boolean printLog ) {
-
         mIsPrintLog = printLog;
     }
 
-
     public static void setContext( Context context ) {
-
         mContext = context;
     }
 
@@ -65,7 +62,7 @@ public class LogUtil {
     public static final int ERROR = 6;
 
 
-    private static void log( final String strLog ) {
+    /*private static void log( final String strLog ) {
 
         new Thread( new Runnable() {
 
@@ -95,14 +92,12 @@ public class LogUtil {
 
 
     public static void d( String tag, String msg ) {
-
         if( null == msg ) {
             return;
         }
-        String finalTag = tag;
-        print( DEBUG, finalTag, msg );
+        print( DEBUG, tag, msg );
         if( !mIsPrintLog ) {
-            log( finalTag + "\t" + ( msg.length() > MESSAGE_LENGTH_MAX ? msg.substring( MESSAGE_LENGTH_MAX ) : msg ) );
+            log( tag + "\t" + ( msg.length() > MESSAGE_LENGTH_MAX ? msg.substring( MESSAGE_LENGTH_MAX ) : msg ) );
         }
     }
 
@@ -183,14 +178,12 @@ public class LogUtil {
     }
 
 
-    /**
+    *//**
      * logAndCommit(这里用一句话描述这个方法的作用) (这里描述这个方法适用条件 – 可选)
      *
      * @param strLog
-     *            void
-     * @exception
-     * @since 1.0.0
-     */
+     *  void
+     *//*
     private static void logAndCommit( final String strLog ) {
 
         new Thread( new Runnable() {
@@ -220,7 +213,7 @@ public class LogUtil {
             if( isSDCardExist ) {
                 String path = mContext.getExternalCacheDir().getAbsolutePath();
                 if( null == path ) {
-                    path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
+                    path = Environment.getExternalStorageDirectory().getAbsolutePath();
                 }
                 File dir = new File( path );
                 if( !dir.exists() ) {
@@ -281,11 +274,7 @@ public class LogUtil {
         PrintWriter pw = new PrintWriter( sw );
         tr.printStackTrace( pw );
         return sw.toString();
-    }
-
-
-
-
+    }*/
 
     private static final String LOG_PREFIX = "uamp_";
     private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
@@ -295,7 +284,6 @@ public class LogUtil {
         if (str.length() > MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH) {
             return LOG_PREFIX + str.substring(0, MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH - 1);
         }
-
         return LOG_PREFIX + str;
     }
 
@@ -349,9 +337,10 @@ public class LogUtil {
                 message = messages[0].toString();
             } else {
                 StringBuilder sb = new StringBuilder();
-                if (messages != null) for (Object m : messages) {
-                    sb.append(m);
-                }
+                if (messages != null)
+                    for (Object m : messages) {
+                        sb.append(m);
+                    }
                 if (t != null) {
                     sb.append("\n").append(Log.getStackTraceString(t));
                 }
@@ -360,9 +349,5 @@ public class LogUtil {
             Log.println(level, tag, message);
         }
     }
-
-
-
-
 
 }

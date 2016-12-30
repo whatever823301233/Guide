@@ -14,10 +14,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.systek.guide.R;
-import com.systek.guide.adapter.BaseRecyclerAdapter;
-import com.systek.guide.adapter.MuseumAdapter;
+import com.systek.guide.ui.adapter.BaseRecyclerAdapter;
+import com.systek.guide.ui.adapter.MuseumAdapter;
 import com.systek.guide.bean.Museum;
-import com.systek.guide.iView.IMuseumChooseView;
+import com.systek.guide.ui.iView.IMuseumChooseView;
 import com.systek.guide.presenter.MuseumChoosePresenter;
 import com.systek.guide.ui.BaseFragment;
 

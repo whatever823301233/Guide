@@ -15,11 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.systek.guide.R;
-import com.systek.guide.adapter.BaseRecyclerAdapter;
-import com.systek.guide.adapter.ExhibitAdapter;
+import com.systek.guide.ui.adapter.BaseRecyclerAdapter;
+import com.systek.guide.ui.adapter.ExhibitAdapter;
 import com.systek.guide.base.util.AndroidUtil;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.iView.ITopicView;
+import com.systek.guide.ui.iView.ITopicView;
 import com.systek.guide.presenter.TopicPresenter;
 import com.systek.guide.service.MediaIDHelper;
 import com.systek.guide.ui.BaseFragment;
@@ -93,10 +93,15 @@ public class TopicFragment extends BaseFragment implements ITopicView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
         presenter.onViewCreated();
         presenter.checkChannelList();
         initTabColumn();
-
     }
 
     @Override

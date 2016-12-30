@@ -13,7 +13,7 @@ import com.systek.guide.bean.Exhibit;
 import com.systek.guide.biz.bizImpl.TopicBiz;
 import com.systek.guide.biz.iBiz.ITopicBiz;
 import com.systek.guide.biz.iBiz.OnInitBeanListener;
-import com.systek.guide.iView.ITopicView;
+import com.systek.guide.ui.iView.ITopicView;
 import com.systek.guide.ui.widget.channel.ChannelItem;
 import com.systek.okhttp_library.OkHttpUtils;
 import com.systek.okhttp_library.callback.FileCallBack;

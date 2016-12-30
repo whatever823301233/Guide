@@ -15,9 +15,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.systek.guide.R;
-import com.systek.guide.adapter.MuseumIconAdapter;
+import com.systek.guide.ui.adapter.MuseumIconAdapter;
 import com.systek.guide.bean.Museum;
-import com.systek.guide.iView.IMuseumHomeView;
+import com.systek.guide.ui.iView.IMuseumHomeView;
 import com.systek.guide.presenter.MuseumHomePresenter;
 import com.systek.guide.ui.BaseFragment;
 import com.systek.guide.ui.activity.GuideActivity;

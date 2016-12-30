@@ -11,9 +11,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.systek.guide.R;
-import com.systek.guide.adapter.CityAdapter;
+import com.systek.guide.ui.adapter.CityAdapter;
 import com.systek.guide.bean.City;
-import com.systek.guide.iView.ICityChooseView;
+import com.systek.guide.ui.iView.ICityChooseView;
 import com.systek.guide.presenter.CityChoosePresenter;
 import com.systek.guide.ui.BaseFragment;
 import com.systek.guide.ui.widget.SideBar;

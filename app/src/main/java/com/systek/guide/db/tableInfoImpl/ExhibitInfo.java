@@ -30,7 +30,7 @@ public class ExhibitInfo extends TableInfo {
             + Exhibit.CONTENT                   + " varchar,"
             + Exhibit.L_EXHIBIT                 + " varchar,"
             + Exhibit.R_EXHIBIT                 + " varchar,"
-            + Exhibit.AREA_ROOM_ID              + " areaRoomId,"
+            + Exhibit.AREA_ROOM_ID              + " varchar,"
             + Exhibit.VERSION                   + " integer,"
             + Exhibit.IS_FAVORITE               + " integer,"
             + Exhibit.PRIORITY                  + " integer )";

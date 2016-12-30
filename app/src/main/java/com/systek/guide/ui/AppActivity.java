@@ -12,7 +12,7 @@ import android.support.v4.media.session.PlaybackStateCompat;
 
 import com.systek.guide.R;
 import com.systek.guide.base.util.LogUtil;
-import com.systek.guide.iView.MediaBrowserProvider;
+import com.systek.guide.ui.iView.MediaBrowserProvider;
 import com.systek.guide.service.PlayService;
 import com.systek.guide.ui.fragment.PlaybackControlsFragment;
 

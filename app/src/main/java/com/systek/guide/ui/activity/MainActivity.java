@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.systek.guide.R;
 import com.systek.guide.base.AppManager;
 import com.systek.guide.bean.Museum;
-import com.systek.guide.iView.MainActivityView;
+import com.systek.guide.ui.iView.MainActivityView;
 import com.systek.guide.presenter.MainActivityPresenter;
 import com.systek.guide.service.MediaIDHelper;
 import com.systek.guide.ui.AppActivity;

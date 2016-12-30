@@ -29,7 +29,6 @@ import static com.systek.guide.service.MediaIDHelper.MEDIA_ID_ROOT;
 
 public class PlayService extends MediaBrowserServiceCompat implements Playback.Callback {
 
-
     private static final String TAG = PlayService.class.getSimpleName();
     // The action of the incoming Intent indicating that it contains a command
     // to be executed (see {@link #onStartCommand})
@@ -47,23 +46,17 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
     private static final String CUSTOM_ACTION_THUMBS_UP = "com.qiang.guide.THUMBS_UP";
     // Delay stopSelf by using a handler.
     private static final int STOP_DELAY = 30000;
-
-    private MediaSessionCompat mSession;
-
     // Music catalog manager
     private MusicProvider mMusicProvider;
-
     private final DelayedStopHandler mDelayedStopHandler = new DelayedStopHandler(this);
-
     // "Now playing" queue:
     private List<MediaSessionCompat.QueueItem> mPlayingQueue;
     private int mCurrentIndexOnQueue;
     // Indicates whether the service was started.
     private boolean mServiceStarted;
-
-    private Bundle mSessionExtras;
-
+    private MediaSessionCompat mSession;
     private Playback mPlayback;
+    private Bundle mSessionExtras;
 
     @Override
     public void onCreate() {
@@ -74,8 +67,8 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
         mSession = new MediaSessionCompat(this, TAG);
         setSessionToken(mSession.getSessionToken());
         mSession.setCallback(new MediaSessionCompatCallback());
-        mSession.setFlags(MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS
-                | MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS);
+        mSession.setFlags( MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS |
+                MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS );
 
         mPlayback = new LocalPlayback(this,mMusicProvider);
         mPlayback.setState(PlaybackStateCompat.STATE_NONE);
@@ -83,7 +76,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
         mPlayback.start();
 
         updatePlaybackState(null);
-
     }
 
     @Override
@@ -121,7 +113,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
     @Nullable
     @Override
     public BrowserRoot onGetRoot(@NonNull String clientPackageName, int clientUid, @Nullable Bundle rootHints) {
-        // return new MediaBrowserServiceCompat.BrowserRoot(MEDIA_ID_MUSEUM_ID, null);
         return new MediaBrowserServiceCompat.BrowserRoot(MEDIA_ID_ROOT, null);
     }
 
@@ -130,7 +121,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
         if (!mMusicProvider.isInitialized()) {
             // Use result.detach to allow calling result.sendResult from another thread:
             result.detach();
-
             mMusicProvider.retrieveMediaAsync(new MusicProvider.Callback() {
                 @Override
                 public void onMusicCatalogReady(boolean success) {
@@ -142,7 +132,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
                     }
                 }
             });
-
         } else {
             // If our music catalog is already loaded/cached, load them into result immediately
             loadChildrenImpl(parentId, result);
@@ -151,16 +140,11 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
 
     private void loadChildrenImpl(String parentMediaId, Result<List<MediaBrowserCompat.MediaItem>> result) {
 
-        LogUtil.d(TAG, "loadChildrenImpl: parentMediaId="+ parentMediaId);
-
         List<MediaBrowserCompat.MediaItem> mediaItems = new ArrayList<>();
-
         if (MEDIA_ID_ROOT.equals(parentMediaId)) {
-            LogUtil.d(TAG, "OnLoadChildren.museumId");
-            Iterable<String> iterable=mMusicProvider.getMuseumIds();
+            Iterable<String> iterable = mMusicProvider.getMuseumIds();
             for (String museumId : iterable) {
-                String browseMediaId=MediaIDHelper.createBrowseCategoryMediaID(MEDIA_ID_MUSEUM_ID, museumId);
-
+                String browseMediaId = MediaIDHelper.createBrowseCategoryMediaID(MEDIA_ID_MUSEUM_ID, museumId);
                 MediaBrowserCompat.MediaItem item = new MediaBrowserCompat.MediaItem(
                         new MediaDescriptionCompat.Builder()
                                 .setMediaId(browseMediaId)
@@ -170,12 +154,8 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
                 );
                 mediaItems.add(item);
             }
-
         } else if (parentMediaId.startsWith(MEDIA_ID_MUSEUM_ID)) {
-
             String museumId = MediaIDHelper.getHierarchy(parentMediaId)[1];
-
-            LogUtil.d(TAG, "OnLoadChildren.SONGS_BY_GENRE  museumId=" + museumId);
             for (MediaMetadataCompat mediaMetaData : mMusicProvider.getMusicsByMuseumId(museumId)) {
                 // Since mediaMetadata fields are immutable, we need to create a copy, so we
                 // can set a hierarchy-aware mediaID. We will need to know the media hierarchy
@@ -193,20 +173,15 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
         } else {
             LogUtil.w(TAG, "Skipping unmatched parentMediaId: " + parentMediaId);
         }
-        LogUtil.d(TAG, "OnLoadChildren sending "+mediaItems.size()+ " results for "+ parentMediaId);
         result.sendResult(mediaItems);
-
     }
 
     private void handleStopRequest(String withError) {
-        LogUtil.d(TAG, "handleStopRequest: mState=" + mPlayback.getState() + " error="+ withError);
         mPlayback.stop(true);
         // reset the delayed stop handler.
         mDelayedStopHandler.removeCallbacksAndMessages(null);
         mDelayedStopHandler.sendEmptyMessageDelayed(0, STOP_DELAY);
-
         updatePlaybackState(withError);
-
         // service is no longer necessary. Will be started again if needed.
         stopSelf();
         mServiceStarted = false;
@@ -217,8 +192,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
      * Handle a request to play music
      */
     private void handlePlayRequest() {
-        LogUtil.d(TAG, "handlePlayRequest: mState=" + mPlayback.getState());
-
         mDelayedStopHandler.removeCallbacksAndMessages(null);
         if (!mServiceStarted) {
             LogUtil.v(TAG, "Starting service");
@@ -228,11 +201,10 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
             startService(new Intent(getApplicationContext(), PlayService.class));
             mServiceStarted = true;
         }
-
         if (!mSession.isActive()) {
             mSession.setActive(true);
         }
-
+        LogUtil.i(TAG,"mCurrentIndexOnQueue = "+ mCurrentIndexOnQueue +" mPlayingQueue =  "+ mPlayingQueue);
         if (QueueHelper.isIndexPlayable(mCurrentIndexOnQueue, mPlayingQueue)) {
             updateMetadata();
             mPlayback.play(mPlayingQueue.get(mCurrentIndexOnQueue));
@@ -243,7 +215,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
      * Handle a request to pause music
      */
     private void handlePauseRequest() {
-        LogUtil.d(TAG, "handlePauseRequest: mState=" + mPlayback.getState());
         mPlayback.pause();
         // reset the delayed stop handler.
         mDelayedStopHandler.removeCallbacksAndMessages(null);
@@ -257,15 +228,12 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
      * @param error if not null, error message to present to the user.
      */
     private void updatePlaybackState(String error) {
-        LogUtil.d(TAG, "updatePlaybackState, playback state=" + mPlayback.getState());
         long position = PlaybackStateCompat.PLAYBACK_POSITION_UNKNOWN;
         if (mPlayback != null && mPlayback.isConnected()) {
             position = mPlayback.getCurrentStreamPosition();
         }
-
         //long actions=getAvailableActions();
         PlaybackStateCompat.Builder stateBuilder = new PlaybackStateCompat.Builder();
-
         long actions = PlaybackStateCompat.ACTION_PLAY | PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID |
                 PlaybackStateCompat.ACTION_PLAY_FROM_SEARCH;
         if (mPlayingQueue == null || mPlayingQueue.isEmpty()) {
@@ -282,10 +250,8 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
             }
             stateBuilder.setActions(actions);
         }
-
         setCustomAction(stateBuilder);
         int state = mPlayback.getState();
-
         // If there is an error message, send it to the playback state:
         if (error != null) {
             // Error states are really only supposed to be used for errors that cause playback to
@@ -325,9 +291,7 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
 //            MediaSessionCompat.QueueItem item = mPlayingQueue.get(mCurrentIndexOnQueue);
 //            stateBuilder.setActiveQueueItemId(item.getQueueId());
 //        }
-
         mSession.setPlaybackState(stateBuilder.build());
-
     }
 
     private void setCustomAction(PlaybackStateCompat.Builder stateBuilder) {
@@ -375,17 +339,13 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
                     e);
             throw e;
         }
-        LogUtil.d(TAG, "Updating metadata for MusicID= " + musicId);
         mSession.setMetadata(track);
-
-
     }
 
     private MediaMetadataCompat getCurrentPlayingMusic() {
         if (QueueHelper.isIndexPlayable(mCurrentIndexOnQueue, mPlayingQueue)) {
             MediaSessionCompat.QueueItem item = mPlayingQueue.get(mCurrentIndexOnQueue);
             if (item != null) {
-                LogUtil.d(TAG, "getCurrentPlayingMusic for musicId="+ item.getDescription().getMediaId());
                 return mMusicProvider.getMusic(
                         MediaIDHelper.extractMusicIDFromMediaID(item.getDescription().getMediaId()));
             }
@@ -410,8 +370,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
         }
         return actions;
     }
-
-
 
     @Override
     public void onCompletion() {
@@ -457,8 +415,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
 
         @Override
         public void onPlay() {
-            LogUtil.d(TAG, "play");
-
            if (mPlayingQueue == null || mPlayingQueue.isEmpty()) {
                return;
                 /*mPlayingQueue = QueueHelper.getRandomQueue(mMusicProvider);
@@ -467,7 +423,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
                 // start playing from the beginning of the queue
                 mCurrentIndexOnQueue = 0;*/
             }
-
             if (mPlayingQueue != null && !mPlayingQueue.isEmpty()) {
                 handlePlayRequest();
             }
@@ -475,7 +430,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
 
         @Override
         public void onSkipToQueueItem(long queueId) {
-            LogUtil.d(TAG, "OnSkipToQueueItem:" + queueId);
 
             if (mPlayingQueue != null && !mPlayingQueue.isEmpty()) {
                 // set the current index on queue from the music Id:
@@ -487,14 +441,11 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
 
         @Override
         public void onSeekTo(long position) {
-            LogUtil.d(TAG, "onSeekTo:", position);
             mPlayback.seekTo((int) position);
         }
 
         @Override
         public void onPlayFromMediaId(String mediaId, Bundle extras) {
-            LogUtil.d(TAG, "playFromMediaId mediaId:", mediaId, "  extras=", extras);
-
             // The mediaId used here is not the unique musicId. This one comes from the
             // MediaBrowser, and is actually a "hierarchy-aware mediaID": a concatenation of
             // the hierarchy in MediaBrowser and the actual unique musicID. This is necessary
@@ -522,19 +473,16 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
 
         @Override
         public void onPause() {
-            LogUtil.d(TAG, "pause. current state=" + mPlayback.getState());
             handlePauseRequest();
         }
 
         @Override
         public void onStop() {
-            LogUtil.d(TAG, "stop. current state=" + mPlayback.getState());
             handleStopRequest(null);
         }
 
         @Override
         public void onSkipToNext() {
-            LogUtil.d(TAG, "skipToNext");
             mCurrentIndexOnQueue++;
             if (mPlayingQueue != null && mCurrentIndexOnQueue >= mPlayingQueue.size()) {
                 // This sample's behavior: skipping to next when in last song returns to the
@@ -554,7 +502,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
 
         @Override
         public void onSkipToPrevious() {
-            LogUtil.d(TAG, "skipToPrevious");
             mCurrentIndexOnQueue --;
             if (mPlayingQueue != null && mCurrentIndexOnQueue < 0) {
                 // This sample's behavior: skipping to previous when in first song restarts the
@@ -574,7 +521,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
         @Override
         public void onCustomAction(String action, Bundle extras) {
             if (CUSTOM_ACTION_THUMBS_UP.equals(action)) {
-                LogUtil.i(TAG, "onCustomAction: favorite for current track");
                 MediaMetadataCompat track = getCurrentPlayingMusic();
                 if (track != null) {
                     String musicId = track.getString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID);
@@ -614,7 +560,6 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
             }
         }
     }
-
 
 
 }

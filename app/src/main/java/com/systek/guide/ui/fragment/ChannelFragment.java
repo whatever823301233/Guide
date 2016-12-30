@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.systek.guide.R;
 import com.systek.guide.base.util.LogUtil;
-import com.systek.guide.iView.IChannelChooseView;
+import com.systek.guide.ui.iView.IChannelChooseView;
 import com.systek.guide.presenter.ChannelPresenter;
 import com.systek.guide.ui.BaseFragment;
 import com.systek.guide.ui.widget.channel.ChannelItem;

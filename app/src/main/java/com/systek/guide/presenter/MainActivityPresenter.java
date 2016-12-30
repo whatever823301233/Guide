@@ -5,7 +5,7 @@ import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.systek.guide.R;
-import com.systek.guide.iView.MainActivityView;
+import com.systek.guide.ui.iView.MainActivityView;
 import com.systek.guide.ui.fragment.CityFragment;
 import com.systek.guide.ui.fragment.ExhibitListFragment;
 import com.systek.guide.ui.fragment.MapFragment;

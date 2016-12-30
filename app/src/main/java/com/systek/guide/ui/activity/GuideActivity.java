@@ -14,7 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.systek.guide.R;
-import com.systek.guide.iView.IMainGuideView;
+import com.systek.guide.ui.iView.IMainGuideView;
 import com.systek.guide.presenter.GuidePresenter;
 import com.systek.guide.service.MediaIDHelper;
 import com.systek.guide.ui.AppActivity;

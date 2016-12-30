@@ -5,7 +5,7 @@ import android.util.Log;
 import com.systek.guide.R;
 import com.systek.guide.biz.bizImpl.MainGuideBiz;
 import com.systek.guide.biz.iBiz.IMainGuideBiz;
-import com.systek.guide.iView.IMainGuideView;
+import com.systek.guide.ui.iView.IMainGuideView;
 import com.systek.guide.ui.fragment.ExhibitListFragment;
 import com.systek.guide.ui.fragment.MapFragment;
 

@@ -161,7 +161,6 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
             mCurrentPosition = 0;
             mCurrentMediaId = mediaId;
         }
-
         if (mState == PlaybackState.STATE_PAUSED && !mediaHasChanged && mMediaPlayer != null) {
             configMediaPlayerState();
         } else {
@@ -172,33 +171,24 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
 
             //String source = track.getString(MusicProvider.CUSTOM_METADATA_TRACK_SOURCE);
             String source = track.getString(MediaMetadataCompat.METADATA_KEY_ART_URI);// TODO: 2016/8/3 暂定 METADATA_KEY_ART_URI 放source
-            //String name= FileUtil.changeUrl2Name(source);
-            //String path= Constants.LOCAL_PATH+name;
-
             try {
                 createMediaPlayerIfNeeded();
-
                 mState = PlaybackStateCompat.STATE_BUFFERING;
-
                 mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mMediaPlayer.setDataSource(source);
-
                 // Starts preparing the media player in the background. When
                 // it's done, it will call our OnPreparedListener (that is,
                 // the onPrepared() method on this class, since we set the
                 // listener to 'this'). Until the media player is prepared,
                 // we *cannot* call start() on it!
                 mMediaPlayer.prepareAsync();
-
                 // If we are streaming from the internet, we want to hold a
                 // Wifi lock, which prevents the Wifi radio from going to
                 // sleep while the song is playing.
                 mWifiLock.acquire();
-
                 if (mCallback != null) {
                     mCallback.onPlaybackStatusChanged(mState);
                 }
-
             } catch (IOException ex) {
                 LogUtil.e(TAG, ex, "Exception playing song");
                 if (mCallback != null) {
@@ -207,7 +197,6 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
             }
         }
     }
-
 
     @Override
     public void pause() {
@@ -230,8 +219,6 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
 
     @Override
     public void seekTo(int position) {
-        LogUtil.d(TAG, "seekTo called with ", position);
-
         if (mMediaPlayer == null) {
             // If we do not have a current media player, simply update the current position
             mCurrentPosition = position;
@@ -268,11 +255,9 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
      */
     @Override
     public void onAudioFocusChange(int focusChange) {
-        LogUtil.d(TAG, "onAudioFocusChange. focusChange=", focusChange);
         if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
             // We have gained focus:
             mAudioFocus = AUDIO_FOCUSED;
-
         } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS ||
                 focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
                 focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
@@ -280,7 +265,6 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
             // Otherwise, we need to pause the playback.
             boolean canDuck = focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
             mAudioFocus = canDuck ? AUDIO_NO_FOCUS_CAN_DUCK : AUDIO_NO_FOCUS_NO_DUCK;
-
             // If we are playing, we need to reset media player by calling configMediaPlayerState
             // with mAudioFocus properly set.
             if (mState == PlaybackState.STATE_PLAYING && !canDuck) {
@@ -333,12 +317,12 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
         // The media player is done preparing. That means we can start playing if we
         // have audio focus.
         configMediaPlayerState();
-        if(mp==null){return;}
+        if(mp == null){return;}
 
         //构造一个ComponentName，指向MediaoButtonReceiver类
         //下面为了叙述方便，我直接使用ComponentName类来替代MediaoButtonReceiver类
         mAudioManager.registerMediaButtonEventReceiver(mbCN);
-        int duration=mp.getDuration();
+        int duration = mp.getDuration();
         AppManager.getInstance(null).setCurrentDuration(duration);// TODO: 2016/8/19
 
     }
@@ -368,7 +352,7 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
      * already exists.
      */
     private void createMediaPlayerIfNeeded() {
-        LogUtil.d(TAG, "createMediaPlayerIfNeeded. needed? ", (mMediaPlayer==null));
+        LogUtil.d(TAG, "createMediaPlayerIfNeeded. needed? ", (mMediaPlayer == null));
         if (mMediaPlayer == null) {
             mMediaPlayer = new MediaPlayer();
 
@@ -417,7 +401,7 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
      * null, so if you are calling it, you have to do so from a context where
      * you are sure this is the case.
      */
-    private void configMediaPlayerState() {
+    private void configMediaPlayerState(){
         LogUtil.d(TAG, "configMediaPlayerState. mAudioFocus=", mAudioFocus);
         if (mAudioFocus == AUDIO_NO_FOCUS_NO_DUCK) {
             // If we don't have audio focus and can't duck, we have to pause,
@@ -506,8 +490,5 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
             mWifiLock.release();
         }
     }
-
-
-
 
 }
