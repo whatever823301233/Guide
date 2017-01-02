@@ -5,7 +5,7 @@ import android.os.Message;
 import android.text.TextUtils;
 
 import com.systek.guide.base.AppManager;
-import com.systek.guide.base.util.AndroidUtil;
+import com.systek.guide.util.AndroidUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.Museum;
 import com.systek.guide.biz.bizImpl.MuseumChooseBiz;

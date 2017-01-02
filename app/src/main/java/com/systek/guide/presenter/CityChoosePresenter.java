@@ -3,8 +3,8 @@ package com.systek.guide.presenter;
 import android.os.Handler;
 import android.os.Message;
 
-import com.systek.guide.base.util.AndroidUtil;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.AndroidUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.City;
 import com.systek.guide.biz.bizImpl.CityBiz;

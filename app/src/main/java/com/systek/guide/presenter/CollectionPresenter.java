@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.FileUtil;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.FileUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.biz.bizImpl.CollectionBiz;
@@ -26,6 +26,8 @@ import okhttp3.Call;
  */
 
 public class CollectionPresenter {
+
+    public static final String TAG = CollectionPresenter.class.getSimpleName();
 
     private static final int MSG_WHAT_SHOW_ALL_EXHIBITS = 9527;
     private static final int MSG_WHAT_UPDATE_DATA_FAIL = 9528;
@@ -95,7 +97,7 @@ public class CollectionPresenter {
                         }
                     });
         }else{
-            LogUtil.i("File is Exists");
+            LogUtil.i(TAG,"File is Exists");
             collectionView.toPlay();
         }
 

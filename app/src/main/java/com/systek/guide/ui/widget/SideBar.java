@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.systek.guide.R;
-import com.systek.guide.base.util.DensityUtil;
+import com.systek.guide.util.DensityUtil;
 
 
 /**

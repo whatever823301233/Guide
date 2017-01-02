@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.systek.guide.R;
-import com.systek.guide.base.util.Utility;
+import com.systek.guide.util.Utility;
 import com.systek.guide.ui.iView.IBeginView;
 import com.systek.guide.presenter.BeginPresenter;
 import com.systek.guide.ui.AppActivity;

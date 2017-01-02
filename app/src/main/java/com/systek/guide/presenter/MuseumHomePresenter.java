@@ -6,8 +6,8 @@ import android.view.View;
 
 import com.systek.guide.R;
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.FileUtil;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.FileUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.bean.Label;

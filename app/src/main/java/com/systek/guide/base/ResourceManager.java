@@ -15,7 +15,7 @@ import android.util.Xml;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 
 import org.xmlpull.v1.XmlPullParser;
 

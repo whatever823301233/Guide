@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.systek.guide.R;
 import com.systek.guide.ui.adapter.BaseRecyclerAdapter;
 import com.systek.guide.ui.adapter.ExhibitAdapter;
-import com.systek.guide.base.util.AndroidUtil;
+import com.systek.guide.util.AndroidUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.ui.iView.ITopicView;
 import com.systek.guide.presenter.TopicPresenter;

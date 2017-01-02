@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.db.tableInfoImpl.AreaRoomInfo;
 import com.systek.guide.db.tableInfoImpl.CityInfo;
 import com.systek.guide.db.tableInfoImpl.ExhibitInfo;

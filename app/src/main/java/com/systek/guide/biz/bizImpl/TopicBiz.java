@@ -2,7 +2,7 @@ package com.systek.guide.biz.bizImpl;
 
 import android.os.AsyncTask;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.biz.iBiz.ITopicBiz;
 import com.systek.guide.biz.iBiz.OnInitBeanListener;

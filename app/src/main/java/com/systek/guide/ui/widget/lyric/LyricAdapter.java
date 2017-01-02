@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.systek.guide.R;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

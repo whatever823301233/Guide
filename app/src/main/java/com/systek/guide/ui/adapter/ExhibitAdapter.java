@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.systek.guide.R;
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.BitmapUtil;
-import com.systek.guide.base.util.DensityUtil;
-import com.systek.guide.base.util.FileUtil;
+import com.systek.guide.util.BitmapUtil;
+import com.systek.guide.util.DensityUtil;
+import com.systek.guide.util.FileUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.db.handler.ExhibitHandler;
 
@@ -68,12 +68,12 @@ public class ExhibitAdapter extends BaseRecyclerAdapter<ExhibitAdapter.ViewHolde
     @Override
     public void onBind(RecyclerView.ViewHolder viewHolder,final int realPosition) {
         ViewHolder holder = (ViewHolder)viewHolder;
-        final Exhibit exhibit=exhibitList.get(realPosition);
+        final Exhibit exhibit = exhibitList.get(realPosition);
         holder.tvExhibitName.setText(exhibit.getName());
         holder.tvExhibitYears.setText(exhibit.getLabels());
         holder.tvExhibitYears.setText(exhibit.getLabels());
         int text=exhibit.getNumber();
-        /**此处直接赋值int会调用 一下方法，到资源中找此id，从而异常
+        /*此处直接赋值int会调用 一下方法，到资源中找此id，从而异常
          * @android.view.RemotableViewMethod
         public final void setText(@StringRes int resid) {
         setText(getContext().getResources().getText(resid));
@@ -117,7 +117,7 @@ public class ExhibitAdapter extends BaseRecyclerAdapter<ExhibitAdapter.ViewHolde
                 }
             }
         });
-        int isFavorite= exhibit.getIsFavorite();
+        int isFavorite = exhibit.getIsFavorite();
         if(isFavorite == 0){
             holder.ivCollection.setImageDrawable(context.getResources().getDrawable(R.drawable.iv_heart_empty));
         }else{

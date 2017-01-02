@@ -2,7 +2,7 @@ package com.systek.guide.biz.bizImpl;
 
 import com.alibaba.fastjson.JSON;
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.City;
 import com.systek.guide.biz.iBiz.ICityBiz;
 import com.systek.guide.biz.iBiz.OnInitBeanListener;

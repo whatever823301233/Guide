@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 
 /**
  * Created by qiang on 2016/11/28.
@@ -68,7 +68,5 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtil.i(getTag(),getTag()+" 已销毁");
-
     }
 }

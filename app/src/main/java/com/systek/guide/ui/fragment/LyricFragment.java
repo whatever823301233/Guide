@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.systek.guide.R;
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.ui.BaseFragment;
 import com.systek.guide.ui.widget.lyric.LyricAdapter;

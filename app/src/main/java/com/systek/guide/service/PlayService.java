@@ -16,7 +16,7 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.text.TextUtils;
 
 import com.systek.guide.R;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.biz.MusicProvider;
 
 import java.lang.ref.WeakReference;
@@ -61,6 +61,7 @@ public class PlayService extends MediaBrowserServiceCompat implements Playback.C
     @Override
     public void onCreate() {
         super.onCreate();
+        LogUtil.i(TAG,"onCreate");
         mPlayingQueue = new ArrayList<>();
         mMusicProvider = new MusicProvider();
         // Start a new MediaSession

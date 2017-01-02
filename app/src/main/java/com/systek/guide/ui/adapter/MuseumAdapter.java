@@ -12,9 +12,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.systek.guide.R;
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.BitmapUtil;
-import com.systek.guide.base.util.DensityUtil;
-import com.systek.guide.base.util.FileUtil;
+import com.systek.guide.util.BitmapUtil;
+import com.systek.guide.util.DensityUtil;
+import com.systek.guide.util.FileUtil;
 import com.systek.guide.bean.Museum;
 
 import java.io.File;

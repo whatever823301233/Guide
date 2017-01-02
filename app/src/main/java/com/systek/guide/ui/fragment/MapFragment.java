@@ -16,7 +16,7 @@ import com.nimbledevices.indoorguide.MovementModeListener;
 import com.nimbledevices.indoorguide.RoutingListener;
 import com.nimbledevices.indoorguide.ZoneListener;
 import com.systek.guide.R;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.ui.iView.IMapView;
 import com.systek.guide.presenter.MapPresenter;
 import com.systek.guide.ui.BaseFragment;

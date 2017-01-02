@@ -2,7 +2,7 @@ package com.systek.guide.db.handler;
 
 import android.database.Cursor;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.City;
 import com.systek.guide.db.DBHandler;
 

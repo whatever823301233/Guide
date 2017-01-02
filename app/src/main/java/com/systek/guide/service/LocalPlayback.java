@@ -16,7 +16,7 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.text.TextUtils;
 
 import com.systek.guide.base.AppManager;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.biz.MusicProvider;
 import com.systek.guide.receiver.MediaButtonReceiver;
 
@@ -28,7 +28,7 @@ import java.io.IOException;
 public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChangeListener,
         MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnSeekCompleteListener {
 
-    private static final String TAG = LogUtil.makeLogTag(LocalPlayback.class);
+    private static final String TAG = LocalPlayback.class.getSimpleName();
 
     // The volume we set the media player to when we lose audio focus, but are
     // allowed to reduce the volume instead of stopping playback.
@@ -94,6 +94,7 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
 
     @Override
     public void stop(boolean notifyListeners) {
+        LogUtil.i(TAG,"stop");
         mState = PlaybackStateCompat.STATE_STOPPED;
         if (notifyListeners && mCallback != null) {
             mCallback.onPlaybackStatusChanged(mState);
@@ -151,7 +152,7 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
 
     @Override
     public void play(MediaSessionCompat.QueueItem item) {
-
+        LogUtil.i(TAG,"play");
         mPlayOnFocusGain = true;
         tryToGetAudioFocus();
         registerAudioNoisyReceiver();
@@ -200,6 +201,7 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
 
     @Override
     public void pause() {
+        LogUtil.i(TAG,"pause");
         if (mState == PlaybackState.STATE_PLAYING) {
             // Pause media player and cancel the 'foreground service' state.
             if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
@@ -219,6 +221,7 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
 
     @Override
     public void seekTo(int position) {
+        LogUtil.i(TAG,"seekTo");
         if (mMediaPlayer == null) {
             // If we do not have a current media player, simply update the current position
             mCurrentPosition = position;
@@ -475,16 +478,13 @@ public class LocalPlayback implements  Playback, AudioManager.OnAudioFocusChange
      */
     private void relaxResources(boolean releaseMediaPlayer) {
         LogUtil.d(TAG, "relaxResources. releaseMediaPlayer=", releaseMediaPlayer);
-
         mService.stopForeground(true);
-
         // stop and release the Media Player, if it's available
         if (releaseMediaPlayer && mMediaPlayer != null) {
             mMediaPlayer.reset();
             mMediaPlayer.release();
             mMediaPlayer = null;
         }
-
         // we can also release the Wifi lock, if we're holding it
         if (mWifiLock.isHeld()) {
             mWifiLock.release();

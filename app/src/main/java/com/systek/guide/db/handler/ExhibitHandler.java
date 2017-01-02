@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.db.DBHandler;
 import com.systek.guide.ui.widget.channel.ChannelItem;

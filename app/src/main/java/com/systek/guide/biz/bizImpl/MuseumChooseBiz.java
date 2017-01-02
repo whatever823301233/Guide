@@ -8,8 +8,8 @@ import com.systek.okhttp_library.OkHttpUtils;
 import com.systek.okhttp_library.callback.FileCallBack;
 import com.systek.okhttp_library.callback.StringCallback;
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.FileUtil;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.FileUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Museum;
 import com.systek.guide.biz.iBiz.IMuseumChooseBiz;
 import com.systek.guide.biz.iBiz.OnInitBeanListener;
@@ -93,14 +93,14 @@ public class MuseumChooseBiz implements IMuseumChooseBiz {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        LogUtil.i("",response);
+                        LogUtil.i(TAG,response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray array = (JSONArray) jsonObject.get("url");
-                            LogUtil.i("",array.toString());
+                            LogUtil.i(TAG,array.toString());
                             List<String> urlList = JSON.parseArray(array.toString(),String.class);
                             totalSize = urlList.size();
-                            LogUtil.i("",urlList.size());
+                            LogUtil.i(TAG,String.valueOf(totalSize));
                             downloadFiles(urlList,museumId,listener);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -167,7 +167,7 @@ public class MuseumChooseBiz implements IMuseumChooseBiz {
 
                             @Override
                             public void onResponse(File response, int id) {
-                                LogUtil.i("",response.getAbsolutePath());
+                                LogUtil.i(TAG,response.getAbsolutePath());
                                 progress ++;
                                 if(listener != null){
                                     listener.onProgress(progress,totalSize);

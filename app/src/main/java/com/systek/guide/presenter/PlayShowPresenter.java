@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.widget.SeekBar;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.bean.MultiAngleImg;
 import com.systek.guide.biz.bizImpl.PlayShowBiz;

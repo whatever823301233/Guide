@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.systek.guide.R;
 import com.systek.guide.base.Constants;
-import com.systek.guide.base.util.AndroidUtil;
-import com.systek.guide.base.util.BitmapUtil;
-import com.systek.guide.base.util.FileUtil;
+import com.systek.guide.util.AndroidUtil;
+import com.systek.guide.util.BitmapUtil;
+import com.systek.guide.util.FileUtil;
 
 import java.util.ArrayList;
 import java.util.List;

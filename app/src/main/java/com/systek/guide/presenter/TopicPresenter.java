@@ -6,8 +6,8 @@ import android.os.Message;
 
 import com.systek.guide.base.Constants;
 import com.systek.guide.base.GlobalConfig;
-import com.systek.guide.base.util.FileUtil;
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.FileUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.biz.bizImpl.TopicBiz;
@@ -31,6 +31,8 @@ import okhttp3.Call;
 
 public class TopicPresenter {
 
+    public static final String TAG =  TopicPresenter.class.getSimpleName();
+
     private static final int MSG_WHAT_SHOW_ALL_EXHIBITS =9527;
     private static final int MSG_WHAT_UPDATE_DATA_FAIL=9528;
 
@@ -41,8 +43,8 @@ public class TopicPresenter {
 
     public TopicPresenter(ITopicView topicView){
         this.topicView=topicView;
-        topicBiz=new TopicBiz();
-        handler=new MyHandler(this.topicView);
+        topicBiz = new TopicBiz();
+        handler = new MyHandler(this.topicView);
     }
 
     public void onViewCreated(){
@@ -52,7 +54,7 @@ public class TopicPresenter {
         topicBiz.initAllExhibitByMuseumId(museumId, new OnInitBeanListener() {
             @Override
             public void onSuccess(List<? extends BaseBean> beans) {
-                List<Exhibit> exhibitList= (List<Exhibit>) beans;
+                List<Exhibit> exhibitList = (List<Exhibit>) beans;
                 topicView.setAllExhibitList(exhibitList);
                 handler.sendEmptyMessage(MSG_WHAT_SHOW_ALL_EXHIBITS);
             }
@@ -78,7 +80,7 @@ public class TopicPresenter {
                     .execute(new FileCallBack(Constants.LOCAL_PATH+exhibit.getMuseumId(),name) {
                         @Override
                         public void onError(Call call, Exception e, int id) {
-                            LogUtil.e("",e.toString());
+                            LogUtil.e(TAG,e.toString());
                             topicView.showFailedError();
                         }
 
@@ -89,15 +91,15 @@ public class TopicPresenter {
                         }
                     });
         }else{
-            LogUtil.i("File is Exists");
+            LogUtil.i(TAG,"File is Exists");
             topicView.toPlay();
         }
     }
 
     public void checkChannelList() {
-        List<ChannelItem> channelItems= GlobalConfig.getInstance(topicView.getContext()).getUserChannelList();
-        if(channelItems==null||channelItems.size()<=2){
-            channelItems=new ArrayList<>();
+        List<ChannelItem> channelItems = GlobalConfig.getInstance(topicView.getContext()).getUserChannelList();
+        if(channelItems == null || channelItems.size() <= 2){
+            channelItems = new ArrayList<>();
             channelItems.add(new ChannelItem(1, "全部", 1, 1));
             channelItems.add(new ChannelItem(2, "筛选", 2, 1));
             topicView.setUserChannelList(channelItems);
@@ -107,7 +109,7 @@ public class TopicPresenter {
         topicView.setUserChannelList(channelItems);
 
         List<Exhibit> exhibitList=getExhibitByChannel(channelItems);
-        if(exhibitList==null||exhibitList.size()==0){
+        if(exhibitList == null || exhibitList.size() == 0){
             topicView.onNoData();
         }else{
             topicView.setAllExhibitList(exhibitList);

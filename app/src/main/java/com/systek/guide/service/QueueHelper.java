@@ -1,10 +1,9 @@
 package com.systek.guide.service;
 
-import android.os.Bundle;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 
-import com.systek.guide.base.util.LogUtil;
+import com.systek.guide.util.LogUtil;
 import com.systek.guide.biz.MusicProvider;
 
 import java.util.ArrayList;
