@@ -7,10 +7,10 @@ import com.systek.guide.util.AndroidUtil;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.City;
-import com.systek.guide.biz.bizImpl.CityBiz;
-import com.systek.guide.biz.iBiz.ICityBiz;
-import com.systek.guide.biz.iBiz.OnInitBeanListener;
-import com.systek.guide.ui.iView.ICityChooseView;
+import com.systek.guide.biz.CityBiz;
+import com.systek.guide.iBiz.ICityBiz;
+import com.systek.guide.iBiz.OnInitBeanListener;
+import com.systek.guide.iView.ICityChooseView;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

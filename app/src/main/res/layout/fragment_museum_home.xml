@@ -224,7 +224,7 @@
 
             </RelativeLayout>
 
-            <com.systek.guide.ui.widget.NormalTextView
+            <com.systek.guide.widget.NormalTextView
                 android:id="@+id/tvMuseumIntroduce"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="5dp"

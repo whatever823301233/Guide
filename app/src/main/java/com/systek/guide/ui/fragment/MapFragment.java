@@ -15,14 +15,20 @@ import com.nimbledevices.indoorguide.GuideManagerListener;
 import com.nimbledevices.indoorguide.MovementModeListener;
 import com.nimbledevices.indoorguide.RoutingListener;
 import com.nimbledevices.indoorguide.ZoneListener;
+import com.nimbledevices.indoorguide.ui.FloorPlanMarker;
 import com.systek.guide.R;
-import com.systek.guide.util.LogUtil;
-import com.systek.guide.ui.iView.IMapView;
 import com.systek.guide.presenter.MapPresenter;
-import com.systek.guide.ui.BaseFragment;
-import com.systek.guide.ui.widget.MyFloorPlanViewPager;
+import com.systek.guide.base.BaseFragment;
+import com.systek.guide.iView.IMapView;
+import com.systek.guide.widget.MyFloorPlanViewPager;
+import com.systek.guide.widget.MyPOIMarkerView;
+import com.systek.guide.util.LogUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
+import java.util.List;
 
 public class MapFragment extends BaseFragment implements IMapView,
         GuideManagerListener,
@@ -30,7 +36,7 @@ public class MapFragment extends BaseFragment implements IMapView,
         ZoneListener,
         RoutingListener {
     private static final String ARG_PARAM1 = "param1";
-    private static final String nddFileName = "2a21-635-building-04-1.ndd";
+    private static final String nddFileName = "paul-test-02-2.ndd";//2a21-635-building-04-1.ndd
 
     private String museumId;
 
@@ -237,7 +243,7 @@ public class MapFragment extends BaseFragment implements IMapView,
         guideManager.requestRoutingUpdates(this,getHoldingActivity());
         guideManager.requestZoneUpdates(this,getHoldingActivity());
 
-       /* List<JSONObject> list = guideManager.getPOIs("OfficeG");
+        List<JSONObject> list = guideManager.getPOIs("OfficeG");
         for(JSONObject j: list) {
             ///Overriding background color like in iOS example
             try {
@@ -261,9 +267,9 @@ public class MapFragment extends BaseFragment implements IMapView,
             });
             mapView.addMarker(marker);
         }
-*/
+
         //guideManager.startRouting("Room GA01");
-        guideManager.startRouting("Room GE01");
+       // guideManager.startRouting("Room GE01");
 
     }
 

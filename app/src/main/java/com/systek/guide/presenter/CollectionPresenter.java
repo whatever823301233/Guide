@@ -8,10 +8,10 @@ import com.systek.guide.util.FileUtil;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.biz.bizImpl.CollectionBiz;
-import com.systek.guide.biz.iBiz.ICollectionBiz;
-import com.systek.guide.biz.iBiz.OnInitBeanListener;
-import com.systek.guide.ui.iView.ICollectionView;
+import com.systek.guide.biz.CollectionBiz;
+import com.systek.guide.iBiz.ICollectionBiz;
+import com.systek.guide.iBiz.OnInitBeanListener;
+import com.systek.guide.iView.ICollectionView;
 import com.systek.okhttp_library.OkHttpUtils;
 import com.systek.okhttp_library.callback.FileCallBack;
 

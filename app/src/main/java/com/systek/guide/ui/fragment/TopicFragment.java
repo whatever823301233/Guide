@@ -15,17 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.systek.guide.R;
-import com.systek.guide.ui.adapter.BaseRecyclerAdapter;
-import com.systek.guide.ui.adapter.ExhibitAdapter;
+import com.systek.guide.base.BaseRecyclerAdapter;
+import com.systek.guide.adapter.ExhibitAdapter;
 import com.systek.guide.util.AndroidUtil;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.ui.iView.ITopicView;
+import com.systek.guide.iView.ITopicView;
 import com.systek.guide.presenter.TopicPresenter;
-import com.systek.guide.service.MediaIDHelper;
-import com.systek.guide.ui.BaseFragment;
-import com.systek.guide.ui.widget.ColumnHorizontalScrollView;
-import com.systek.guide.ui.widget.channel.ChannelItem;
-import com.systek.guide.ui.widget.recyclerView.QRecyclerView;
+import com.systek.guide.util.MediaIDHelper;
+import com.systek.guide.base.BaseFragment;
+import com.systek.guide.widget.ColumnHorizontalScrollView;
+import com.systek.guide.bean.ChannelItem;
+import com.systek.guide.widget.recyclerView.QRecyclerView;
 
 import java.util.List;
 
@@ -36,29 +36,26 @@ public class TopicFragment extends BaseFragment implements ITopicView {
     private QRecyclerView qRecyclerView;
     private ExhibitAdapter exhibitAdapter;
     private TopicPresenter presenter;
-    private List<Exhibit> allExhibitList;
-    private Exhibit chooseExhibit;
-    private String mMediaId;
     /** 自定义HorizontalScrollView */
     private ColumnHorizontalScrollView mColumnHorizontalScrollView;
     private LinearLayout mRadioGroup_content;
     private ImageView button_more_columns;
     private LinearLayout ll_more_columns;
     private RelativeLayout rl_column;
-
     /** 左阴影部分*/
     public ImageView shade_left;
     /** 右阴影部分 */
     public ImageView shade_right;
-
     /** 请求CODE */
     public final static int CHANNEL_REQUEST = 1;
-    private List<ChannelItem> userChannelList;
     private int mScreenWidth;
+
     private int mItemWidth;
+    private Exhibit chooseExhibit;
     private int columnSelectIndex;
     private ChannelItem chooseChannel;
-
+    private List<Exhibit> allExhibitList;
+    private List<ChannelItem> userChannelList;
     private OnFragmentInteractionListener mListener;
 
     public TopicFragment() {
@@ -92,16 +89,14 @@ public class TopicFragment extends BaseFragment implements ITopicView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        presenter.onViewCreated();
+        initTabColumn();
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.onViewCreated();
-        presenter.checkChannelList();
-        initTabColumn();
     }
 
     @Override
@@ -263,7 +258,7 @@ public class TopicFragment extends BaseFragment implements ITopicView {
 
     @Override
     public void refreshExhibitList() {
-
+        exhibitAdapter.updateData(allExhibitList);
     }
 
     @Override
@@ -370,6 +365,11 @@ public class TopicFragment extends BaseFragment implements ITopicView {
     @Override
     public void setTitle(String title) {
         mListener.setTitle(title);
+    }
+
+    @Override
+    public List<Exhibit> getChooseAllExhibits() {
+        return allExhibitList;
     }
 
     /**

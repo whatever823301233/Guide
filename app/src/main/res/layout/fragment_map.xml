@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.systek.guide.ui.fragment.MapFragment">
     <view
-        class="com.systek.guide.ui.widget.MyFloorPlanViewPager"
+        class="com.systek.guide.widget.MyFloorPlanViewPager"
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

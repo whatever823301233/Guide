@@ -17,7 +17,7 @@
             android:layout_height="40.0dip"
             android:layout_weight="1.0" >
 
-            <com.systek.guide.ui.widget.ColumnHorizontalScrollView
+            <com.systek.guide.widget.ColumnHorizontalScrollView
                 android:id="@+id/mColumnHorizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="40.0dip"
@@ -32,7 +32,7 @@
                     android:orientation="horizontal"
                     android:paddingLeft="10.0dip"
                     android:paddingRight="10.0dip" />
-            </com.systek.guide.ui.widget.ColumnHorizontalScrollView>
+            </com.systek.guide.widget.ColumnHorizontalScrollView>
 
             <ImageView
                 android:id="@+id/shade_left"
@@ -67,7 +67,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.systek.guide.ui.widget.recyclerView.QRecyclerView
+    <com.systek.guide.widget.recyclerView.QRecyclerView
         android:id="@+id/qRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -18,7 +18,7 @@ public class AreaRoomInfo extends TableInfo {
     private static final ArrayList<String> tableInfo;
 
     static {
-        tableInfo=new ArrayList<>();
+        tableInfo = new ArrayList<>();
         tableInfo.add(CREATE_INFO);
     }
 

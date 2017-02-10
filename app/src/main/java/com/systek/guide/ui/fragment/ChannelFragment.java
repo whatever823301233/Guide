@@ -18,14 +18,14 @@ import android.widget.TextView;
 
 import com.systek.guide.R;
 import com.systek.guide.util.LogUtil;
-import com.systek.guide.ui.iView.IChannelChooseView;
+import com.systek.guide.iView.IChannelChooseView;
 import com.systek.guide.presenter.ChannelPresenter;
-import com.systek.guide.ui.BaseFragment;
-import com.systek.guide.ui.widget.channel.ChannelItem;
-import com.systek.guide.ui.widget.channel.DragAdapter;
-import com.systek.guide.ui.widget.channel.DragGrid;
-import com.systek.guide.ui.widget.channel.OtherAdapter;
-import com.systek.guide.ui.widget.channel.OtherGridView;
+import com.systek.guide.base.BaseFragment;
+import com.systek.guide.bean.ChannelItem;
+import com.systek.guide.adapter.DragAdapter;
+import com.systek.guide.widget.DragGrid;
+import com.systek.guide.adapter.OtherAdapter;
+import com.systek.guide.widget.OtherGridView;
 
 import java.util.ArrayList;
 import java.util.List;

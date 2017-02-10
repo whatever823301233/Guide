@@ -10,11 +10,11 @@ import com.systek.guide.util.FileUtil;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.biz.bizImpl.TopicBiz;
-import com.systek.guide.biz.iBiz.ITopicBiz;
-import com.systek.guide.biz.iBiz.OnInitBeanListener;
-import com.systek.guide.ui.iView.ITopicView;
-import com.systek.guide.ui.widget.channel.ChannelItem;
+import com.systek.guide.biz.TopicBiz;
+import com.systek.guide.iBiz.ITopicBiz;
+import com.systek.guide.iBiz.OnInitBeanListener;
+import com.systek.guide.iView.ITopicView;
+import com.systek.guide.bean.ChannelItem;
 import com.systek.okhttp_library.OkHttpUtils;
 import com.systek.okhttp_library.callback.FileCallBack;
 
@@ -33,9 +33,8 @@ public class TopicPresenter {
 
     public static final String TAG =  TopicPresenter.class.getSimpleName();
 
-    private static final int MSG_WHAT_SHOW_ALL_EXHIBITS =9527;
-    private static final int MSG_WHAT_UPDATE_DATA_FAIL=9528;
-
+    private static final int MSG_WHAT_SHOW_ALL_EXHIBITS = 9527;
+    private static final int MSG_WHAT_UPDATE_DATA_FAIL = 9528;
 
     private ITopicView topicView;
     private ITopicBiz topicBiz;
@@ -50,7 +49,10 @@ public class TopicPresenter {
     public void onViewCreated(){
         topicView.showLoading();
         topicView.setTitle("专题");
-        String museumId = topicView.getMuseumId();
+        checkChannelList();
+    }
+
+    private void initAllExhibit(String museumId) {
         topicBiz.initAllExhibitByMuseumId(museumId, new OnInitBeanListener() {
             @Override
             public void onSuccess(List<? extends BaseBean> beans) {
@@ -103,12 +105,12 @@ public class TopicPresenter {
             channelItems.add(new ChannelItem(1, "全部", 1, 1));
             channelItems.add(new ChannelItem(2, "筛选", 2, 1));
             topicView.setUserChannelList(channelItems);
-            topicView.showAllExhibits();
+            String museumId = topicView.getMuseumId();
+            initAllExhibit(museumId);
             return;
         }
         topicView.setUserChannelList(channelItems);
-
-        List<Exhibit> exhibitList=getExhibitByChannel(channelItems);
+        List<Exhibit> exhibitList = getExhibitByChannel(channelItems);
         if(exhibitList == null || exhibitList.size() == 0){
             topicView.onNoData();
         }else{
@@ -117,48 +119,40 @@ public class TopicPresenter {
         }
     }
 
-
-
-
-
     private List<Exhibit> getExhibitByChannel(List<ChannelItem> channelItemList){
-        if(channelItemList==null||channelItemList.size()==0){return null;}
-        topicBiz.getExhibit(channelItemList);
+        if(channelItemList == null || channelItemList.size() == 0){ return null; }
         return topicBiz.getExhibit(channelItemList);
 
     }
     private List<Exhibit> getExhibitByChannel(ChannelItem channelItem){
-        if(channelItem==null){return null;}
+        if(channelItem == null){return null;}
         if(channelItem.getName().equals("全部")){
             return topicBiz.getExhibit(topicView.getUserChannelList());
         }else if(channelItem.getName().equals("筛选")){
-            return topicBiz.getExhibit(topicView.getUserChannelList());
+            return topicBiz.getFilterExhibit(topicView.getUserChannelList());
         }
         return topicBiz.getExhibit(channelItem);
 
     }
 
     public void onChannelChoose() {
-        ChannelItem channelItem=topicView.getChooseChannel();
-        if(channelItem==null){return;}
+        ChannelItem channelItem = topicView.getChooseChannel();
+        if(channelItem == null){return;}
         new AsyncTask<ChannelItem,Integer,List<Exhibit>>(){
             @Override
             protected List<Exhibit> doInBackground(ChannelItem... params) {
-                ChannelItem item=params[0];
-                if(item==null){return null;}
+                ChannelItem item = params[0];
                 return getExhibitByChannel(item);
             }
             @Override
             protected void onPostExecute(List<Exhibit> exhibits) {
-                if(exhibits==null||exhibits.size()==0){
+                if(exhibits == null || exhibits.size() == 0){
                     topicView.onNoData();
                 }
                 topicView.setAllExhibitList(exhibits);
                 topicView.refreshExhibitList();
             }
         }.execute(channelItem);
-
-
     }
 
 
@@ -166,15 +160,15 @@ public class TopicPresenter {
 
         WeakReference<ITopicView> activityWeakReference;
         MyHandler(ITopicView activity){
-            this.activityWeakReference=new WeakReference<>(activity);
+            this.activityWeakReference = new WeakReference<>(activity);
         }
 
         @Override
         public void handleMessage(Message msg) {
 
             if(activityWeakReference==null){return;}
-            ITopicView activity=activityWeakReference.get();
-            if(activity==null){return;}
+            ITopicView activity = activityWeakReference.get();
+            if(activity == null){return;}
             switch (msg.what){
                 case MSG_WHAT_SHOW_ALL_EXHIBITS:
                     activity.showAllExhibits();

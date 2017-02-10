@@ -2,7 +2,7 @@ package com.systek.guide.base;
 
 import android.content.Context;
 
-import com.systek.guide.ui.widget.channel.ChannelItem;
+import com.systek.guide.bean.ChannelItem;
 
 import java.util.HashMap;
 import java.util.List;

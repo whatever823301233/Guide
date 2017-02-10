@@ -4,9 +4,9 @@ import android.location.Location;
 import android.os.Handler;
 import android.os.Message;
 
-import com.systek.guide.biz.bizImpl.MapBiz;
-import com.systek.guide.biz.iBiz.IMapBiz;
-import com.systek.guide.ui.iView.IMapView;
+import com.systek.guide.biz.MapBiz;
+import com.systek.guide.iBiz.IMapBiz;
+import com.systek.guide.iView.IMapView;
 
 import java.lang.ref.WeakReference;
 

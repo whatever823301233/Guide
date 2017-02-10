@@ -80,7 +80,7 @@
             android:gravity="center"
             android:visibility="invisible" />
 
-        <com.systek.guide.ui.widget.SideBar
+        <com.systek.guide.widget.SideBar
             android:id="@+id/sidebar"
             android:layout_width="30dp"
             android:layout_height="match_parent"

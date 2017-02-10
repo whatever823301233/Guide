@@ -19,6 +19,7 @@ import com.systek.guide.base.AppManager;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.biz.MusicProvider;
 import com.systek.guide.receiver.MediaButtonReceiver;
+import com.systek.guide.util.MediaIDHelper;
 
 import java.io.IOException;
 

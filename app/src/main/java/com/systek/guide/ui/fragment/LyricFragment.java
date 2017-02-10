@@ -14,11 +14,11 @@ import com.systek.guide.R;
 import com.systek.guide.base.Constants;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.ui.BaseFragment;
-import com.systek.guide.ui.widget.lyric.LyricAdapter;
-import com.systek.guide.ui.widget.lyric.LyricDownloadManager;
-import com.systek.guide.ui.widget.lyric.LyricLoadHelper;
-import com.systek.guide.ui.widget.lyric.LyricSentence;
+import com.systek.guide.base.BaseFragment;
+import com.systek.guide.adapter.LyricAdapter;
+import com.systek.guide.util.lyric.LyricDownloadManager;
+import com.systek.guide.util.lyric.LyricLoadHelper;
+import com.systek.guide.util.lyric.LyricSentence;
 
 import java.io.File;
 import java.util.List;

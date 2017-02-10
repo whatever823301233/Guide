@@ -6,10 +6,10 @@ import android.view.View;
 
 import com.systek.guide.R;
 import com.systek.guide.util.Utility;
-import com.systek.guide.ui.iView.IBeginView;
+import com.systek.guide.iView.IBeginView;
 import com.systek.guide.presenter.BeginPresenter;
-import com.systek.guide.ui.AppActivity;
-import com.systek.guide.ui.BaseFragment;
+import com.systek.guide.base.AppActivity;
+import com.systek.guide.base.BaseFragment;
 
 public class BeginActivity extends AppActivity implements IBeginView {
 

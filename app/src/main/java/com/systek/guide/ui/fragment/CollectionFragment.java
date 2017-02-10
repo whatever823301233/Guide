@@ -9,14 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.systek.guide.R;
-import com.systek.guide.ui.adapter.BaseRecyclerAdapter;
-import com.systek.guide.ui.adapter.ExhibitAdapter;
+import com.systek.guide.base.BaseRecyclerAdapter;
+import com.systek.guide.adapter.ExhibitAdapter;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.ui.iView.ICollectionView;
+import com.systek.guide.iView.ICollectionView;
 import com.systek.guide.presenter.CollectionPresenter;
-import com.systek.guide.service.MediaIDHelper;
-import com.systek.guide.ui.BaseFragment;
-import com.systek.guide.ui.widget.recyclerView.QRecyclerView;
+import com.systek.guide.util.MediaIDHelper;
+import com.systek.guide.base.BaseFragment;
+import com.systek.guide.widget.recyclerView.QRecyclerView;
 
 import java.util.List;
 

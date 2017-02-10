@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.systek.guide.R;
-import com.systek.guide.ui.BaseFragment;
+import com.systek.guide.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.db.DBHandler;
-import com.systek.guide.ui.widget.channel.ChannelItem;
+import com.systek.guide.bean.ChannelItem;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -6,12 +6,12 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.systek.guide.R;
-import com.systek.guide.ui.adapter.ExhibitAdapter;
+import com.systek.guide.adapter.ExhibitAdapter;
 import com.systek.guide.bean.Exhibit;
-import com.systek.guide.ui.iView.IExhibitListView;
+import com.systek.guide.iView.IExhibitListView;
 import com.systek.guide.presenter.NearExhibitPresenter;
-import com.systek.guide.ui.BaseFragment;
-import com.systek.guide.ui.widget.recyclerView.QRecyclerView;
+import com.systek.guide.base.BaseFragment;
+import com.systek.guide.widget.recyclerView.QRecyclerView;
 
 import java.util.List;
 

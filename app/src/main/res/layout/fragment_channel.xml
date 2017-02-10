@@ -43,7 +43,7 @@
                 android:id="@+id/seperate_line"
                 style="@style/subscribe_seperate_line" />
 
-            <com.systek.guide.ui.widget.channel.DragGrid
+            <com.systek.guide.widget.DragGrid
                 android:id="@+id/userGridView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                 android:layout_marginLeft="10.0dip"
                 android:text="更多频道" />
 
-            <com.systek.guide.ui.widget.channel.OtherGridView
+            <com.systek.guide.widget.OtherGridView
                 android:id="@+id/otherGridView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

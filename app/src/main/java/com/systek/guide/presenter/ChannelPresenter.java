@@ -8,10 +8,10 @@ import android.widget.AdapterView;
 import com.systek.guide.R;
 import com.systek.guide.base.GlobalConfig;
 import com.systek.guide.bean.Label;
-import com.systek.guide.biz.bizImpl.TopicChooseBiz;
-import com.systek.guide.biz.iBiz.ITopicChooseBiz;
-import com.systek.guide.ui.iView.IChannelChooseView;
-import com.systek.guide.ui.widget.channel.ChannelItem;
+import com.systek.guide.biz.TopicChooseBiz;
+import com.systek.guide.iBiz.ITopicChooseBiz;
+import com.systek.guide.iView.IChannelChooseView;
+import com.systek.guide.bean.ChannelItem;
 
 import java.util.ArrayList;
 import java.util.Collections;

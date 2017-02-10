@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.systek.guide.ui.widget.NormalTextView
+        <com.systek.guide.widget.NormalTextView
             android:id="@+id/tvContent"
             android:visibility="gone"
             android:textSize="15sp"

@@ -23,7 +23,7 @@ import com.systek.guide.util.BitmapUtil;
 import com.systek.guide.util.DensityUtil;
 import com.systek.guide.util.FileUtil;
 import com.systek.guide.util.LogUtil;
-import com.systek.guide.ui.BaseFragment;
+import com.systek.guide.base.BaseFragment;
 import com.systek.guide.ui.activity.PlayActivity;
 
 import java.util.concurrent.ExecutionException;

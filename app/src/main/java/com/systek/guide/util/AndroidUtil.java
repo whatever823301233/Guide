@@ -372,7 +372,7 @@ public class AndroidUtil {
         if( context == null ) {
             return null;
         }
-        WifiManager wifiManager = ( WifiManager )context.getSystemService( context.WIFI_SERVICE );// 获取ssid等数据
+        WifiManager wifiManager = ( WifiManager )context.getSystemService(Context.WIFI_SERVICE);// 获取ssid等数据
         WifiInfo info = wifiManager.getConnectionInfo();
         if( info != null && info.getSSID() != null ) {
             return info.getSSID().replace( "\"", "" );

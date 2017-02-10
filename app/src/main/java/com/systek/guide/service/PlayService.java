@@ -18,14 +18,16 @@ import android.text.TextUtils;
 import com.systek.guide.R;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.biz.MusicProvider;
+import com.systek.guide.util.MediaIDHelper;
+import com.systek.guide.util.QueueHelper;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.systek.guide.service.MediaIDHelper.MEDIA_ID_MUSEUM_ID;
-import static com.systek.guide.service.MediaIDHelper.MEDIA_ID_ROOT;
+import static com.systek.guide.util.MediaIDHelper.MEDIA_ID_MUSEUM_ID;
+import static com.systek.guide.util.MediaIDHelper.MEDIA_ID_ROOT;
 
 public class PlayService extends MediaBrowserServiceCompat implements Playback.Callback {
 

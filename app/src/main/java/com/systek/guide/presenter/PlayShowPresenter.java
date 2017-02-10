@@ -15,9 +15,9 @@ import android.widget.SeekBar;
 import com.systek.guide.util.LogUtil;
 import com.systek.guide.bean.Exhibit;
 import com.systek.guide.bean.MultiAngleImg;
-import com.systek.guide.biz.bizImpl.PlayShowBiz;
-import com.systek.guide.biz.iBiz.IPlayShowBiz;
-import com.systek.guide.ui.iView.IPlayView;
+import com.systek.guide.biz.PlayShowBiz;
+import com.systek.guide.iBiz.IPlayShowBiz;
+import com.systek.guide.iView.IPlayView;
 
 import java.util.ArrayList;
 

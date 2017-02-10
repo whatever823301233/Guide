@@ -2,10 +2,10 @@ package com.systek.guide.presenter;
 
 import android.content.Intent;
 
-import com.systek.guide.biz.bizImpl.BeginBiz;
-import com.systek.guide.biz.iBiz.IBeginBiz;
-import com.systek.guide.biz.iBiz.OnResponseListener;
-import com.systek.guide.ui.iView.IBeginView;
+import com.systek.guide.biz.BeginBiz;
+import com.systek.guide.iBiz.IBeginBiz;
+import com.systek.guide.iBiz.OnResponseListener;
+import com.systek.guide.iView.IBeginView;
 import com.systek.guide.ui.activity.MainActivity;
 
 /**
