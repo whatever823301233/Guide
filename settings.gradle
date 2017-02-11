@@ -1,1 +1,1 @@
-include ':app', ':okhttp-library', ':beaconlibrary'
+include ':app', ':okhttp', ':beaconlibrary'
