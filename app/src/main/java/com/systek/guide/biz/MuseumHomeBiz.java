@@ -16,9 +16,9 @@ import com.systek.guide.iBiz.OnResponseListener;
 import com.systek.guide.db.handler.BeaconHandler;
 import com.systek.guide.db.handler.ExhibitHandler;
 import com.systek.guide.db.handler.LabelHandler;
-import com.systek.okhttp_library.OkHttpUtils;
-import com.systek.okhttp_library.callback.FileCallBack;
-import com.systek.okhttp_library.callback.StringCallback;
+import com.systek.okhttp.OkHttpUtils;
+import com.systek.okhttp.callback.FileCallBack;
+import com.systek.okhttp.callback.StringCallback;
 
 import java.io.File;
 import java.util.ArrayList;

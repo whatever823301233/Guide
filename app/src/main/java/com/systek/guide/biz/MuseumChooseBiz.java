@@ -4,9 +4,9 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.systek.okhttp_library.OkHttpUtils;
-import com.systek.okhttp_library.callback.FileCallBack;
-import com.systek.okhttp_library.callback.StringCallback;
+import com.systek.okhttp.OkHttpUtils;
+import com.systek.okhttp.callback.FileCallBack;
+import com.systek.okhttp.callback.StringCallback;
 import com.systek.guide.base.Constants;
 import com.systek.guide.util.FileUtil;
 import com.systek.guide.util.LogUtil;

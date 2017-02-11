@@ -23,7 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.systek.guide.R;
-import com.systek.guide.base.AppManager;
+import com.systek.guide.manager.AppManager;
 import com.systek.guide.bean.Museum;
 import com.systek.guide.iView.MainActivityView;
 import com.systek.guide.presenter.MainActivityPresenter;

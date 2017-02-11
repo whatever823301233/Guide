@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.systek.guide.base.AppManager;
+import com.systek.guide.manager.AppManager;
 
 
 /**

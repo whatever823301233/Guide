@@ -7,8 +7,8 @@ import com.systek.guide.bean.City;
 import com.systek.guide.iBiz.ICityBiz;
 import com.systek.guide.iBiz.OnInitBeanListener;
 import com.systek.guide.db.handler.CityHandler;
-import com.systek.okhttp_library.OkHttpUtils;
-import com.systek.okhttp_library.callback.StringCallback;
+import com.systek.okhttp.OkHttpUtils;
+import com.systek.okhttp.callback.StringCallback;
 
 import java.util.List;
 

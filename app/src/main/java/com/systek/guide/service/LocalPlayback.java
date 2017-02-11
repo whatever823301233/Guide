@@ -15,9 +15,9 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.text.TextUtils;
 
-import com.systek.guide.base.AppManager;
+import com.systek.guide.manager.AppManager;
 import com.systek.guide.util.LogUtil;
-import com.systek.guide.biz.MusicProvider;
+import com.systek.guide.manager.MusicProvider;
 import com.systek.guide.receiver.MediaButtonReceiver;
 import com.systek.guide.util.MediaIDHelper;
 

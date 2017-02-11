@@ -6,7 +6,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.text.TextUtils;
 
-import com.systek.guide.base.ResourceManager;
+import com.systek.guide.manager.ResourceManager;
 
 
 /**

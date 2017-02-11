@@ -6,7 +6,7 @@ package com.systek.guide.base;
  * 监听app的生命状态
  */
 
-interface IAppListener {
+public interface IAppListener {
     /**
      *  app退出时，清除数据及状态使用
      */

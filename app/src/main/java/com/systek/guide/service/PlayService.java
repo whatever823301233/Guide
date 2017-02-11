@@ -17,7 +17,7 @@ import android.text.TextUtils;
 
 import com.systek.guide.R;
 import com.systek.guide.util.LogUtil;
-import com.systek.guide.biz.MusicProvider;
+import com.systek.guide.manager.MusicProvider;
 import com.systek.guide.util.MediaIDHelper;
 import com.systek.guide.util.QueueHelper;
 

@@ -3,7 +3,7 @@ package com.systek.guide.util;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 
-import com.systek.guide.biz.MusicProvider;
+import com.systek.guide.manager.MusicProvider;
 
 import java.util.ArrayList;
 import java.util.List;

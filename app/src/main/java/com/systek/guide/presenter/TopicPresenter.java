@@ -15,8 +15,8 @@ import com.systek.guide.iBiz.ITopicBiz;
 import com.systek.guide.iBiz.OnInitBeanListener;
 import com.systek.guide.iView.ITopicView;
 import com.systek.guide.bean.ChannelItem;
-import com.systek.okhttp_library.OkHttpUtils;
-import com.systek.okhttp_library.callback.FileCallBack;
+import com.systek.okhttp.OkHttpUtils;
+import com.systek.okhttp.callback.FileCallBack;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

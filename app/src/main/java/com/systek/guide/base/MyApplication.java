@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.systek.guide.db.DBHandler;
+import com.systek.guide.manager.AppManager;
 
 import java.util.Iterator;
 

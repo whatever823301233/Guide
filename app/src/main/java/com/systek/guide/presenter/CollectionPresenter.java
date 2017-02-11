@@ -12,8 +12,8 @@ import com.systek.guide.biz.CollectionBiz;
 import com.systek.guide.iBiz.ICollectionBiz;
 import com.systek.guide.iBiz.OnInitBeanListener;
 import com.systek.guide.iView.ICollectionView;
-import com.systek.okhttp_library.OkHttpUtils;
-import com.systek.okhttp_library.callback.FileCallBack;
+import com.systek.okhttp.OkHttpUtils;
+import com.systek.okhttp.callback.FileCallBack;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

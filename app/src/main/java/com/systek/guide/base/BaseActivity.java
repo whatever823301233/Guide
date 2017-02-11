@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 
+import com.systek.guide.manager.AppManager;
+
 /**
  * Created by qiang on 2016/11/30.
  */

@@ -40,7 +40,7 @@ import com.bumptech.glide.request.target.Target;
 import com.systek.guide.R;
 import com.systek.guide.adapter.LyricViewPagerAdapter;
 import com.systek.guide.adapter.MultiAngleImgAdapter;
-import com.systek.guide.base.AppManager;
+import com.systek.guide.manager.AppManager;
 import com.systek.guide.base.Constants;
 import com.systek.guide.util.AndroidUtil;
 import com.systek.guide.util.BitmapUtil;

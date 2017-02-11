@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 
-import com.systek.guide.base.AppManager;
+import com.systek.guide.manager.AppManager;
 import com.systek.guide.util.AndroidUtil;
 import com.systek.guide.bean.BaseBean;
 import com.systek.guide.bean.Museum;
